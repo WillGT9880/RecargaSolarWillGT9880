@@ -1,0 +1,180 @@
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+    background-color: #0d0d21;
+    text-align: center;
+    color: #e0e0ff;
+    user-select: none;
+    touch-action: none;
+}
+
+h1 {
+    color: #ffcc00;
+    text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 20px #ff8800;
+}
+
+p {
+    color: #c0c0ff;
+    text-shadow: 0 0 3px #c0c0ff;
+}
+
+#game-container {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    margin: 20px auto;
+    background-image: url(background.png);
+    background-size: cover;
+    border: 2px solid #6c5ce7;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(108, 92, 231, 0.8), inset 0 0 10px rgba(108, 92, 231, 0.5);
+    border-radius: 10px;
+}
+
+#car {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 100px;
+    background-image: url(car.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: drop-shadow(0 0 10px rgba(0, 225, 255, 0.6));
+}
+
+#solar-panel {
+    position: absolute;
+    top: 200px;
+    left: 350px;
+    width: 150px;
+    height: 100px;
+    background-image: url(solar-panel.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: grab;
+    z-index: 10;
+    filter: drop-shadow(0 0 15px rgba(0, 225, 255, 0.9));
+}
+
+.sun-ray {
+    position: absolute;
+    width: 25px; /* Base size */
+    height: 50px; /* Base size */
+    background-image: url(sun-ray.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 5;
+    transition: width 0.2s, height 0.2s, filter 0.2s; /* Smooth transitions */
+    filter: drop-shadow(0 0 10px #ffee88) drop-shadow(0 0 20px #ffcc00);
+}
+
+.ray-weak {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 8px #ffee88) drop-shadow(0 0 15px #ffcc00) saturate(0.8);
+}
+
+.ray-medium {
+    width: 30px;
+    height: 60px;
+    opacity: 1;
+    filter: drop-shadow(0 0 12px #ffee88) drop-shadow(0 0 25px #ffcc00);
+}
+
+.ray-strong {
+    width: 35px;
+    height: 70px;
+    filter: drop-shadow(0 0 15px #fff) drop-shadow(0 0 35px #ffee88) brightness(1.2) saturate(1.2);
+}
+
+#solar-panel:active {
+    cursor: grabbing;
+    filter: drop-shadow(0 0 25px rgba(100, 255, 255, 1));
+}
+
+#battery-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 200px;
+    height: 30px;
+    border: 2px solid #00ffff;
+    background-color: rgba(0, 40, 50, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 0 10px #00ffff, inset 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+#battery-level {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #32ff7e, #00ffab);
+    transition: width 0.5s ease-in-out;
+    border-radius: 3px;
+    box-shadow: 0 0 8px #32ff7e, 0 0 15px #00ffab;
+}
+
+#missed-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #e0e0ff;
+    font-weight: bold;
+    text-shadow: 0 0 5px #a29bfe;
+}
+
+.life {
+    width: 30px;
+    height: 30px;
+    background-image: url(life.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 0 5px #ffee88);
+    transition: opacity 0.3s, filter 0.3s;
+}
+
+.life.lost {
+    opacity: 0.2;
+    filter: none;
+}
+
+#win-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+    color: #ffcc00;
+    background-color: rgba(10, 10, 30, 0.85);
+    padding: 20px 40px;
+    border-radius: 10px;
+    z-index: 20;
+    border: 2px solid #ffcc00;
+    text-shadow: 0 0 8px #ffcc00, 0 0 15px #ff8800;
+    box-shadow: 0 0 20px #ffcc00;
+}
+
+#lose-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+    color: #ff4d4d;
+    background-color: rgba(30, 10, 10, 0.85);
+    padding: 20px 40px;
+    border-radius: 10px;
+    z-index: 20;
+    text-align: center;
+    border: 2px solid #ff4d4d;
+    text-shadow: 0 0 8px #ff4d4d, 0 0 15px #d90429;
+    box-shadow: 0 0 20px #ff4d4d;
+}
+
+.hidden {
+    display: none;
+}
